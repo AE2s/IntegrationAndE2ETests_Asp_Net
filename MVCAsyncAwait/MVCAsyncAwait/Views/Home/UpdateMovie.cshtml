@@ -1,0 +1,14 @@
+﻿@model Movie
+
+@{
+    ViewData["Title"] = "Update Movie";
+}
+
+<h1>Update Movie</h1>
+@using (Html.BeginForm())
+{
+@Html.LabelFor(x => x.Name)
+@Html.TextBoxFor(x => x.Name)
+
+<input id="updateM" type="submit" value="Save" />
+}
