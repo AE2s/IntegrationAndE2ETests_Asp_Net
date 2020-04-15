@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using MVCAsyncAwait.Models;
 
@@ -8,7 +7,7 @@ namespace MVCAsyncAwait
     {
         public MovieContext()
         {
-            
+           
         }
         public MovieContext(DbContextOptions options) : base(options)
         {

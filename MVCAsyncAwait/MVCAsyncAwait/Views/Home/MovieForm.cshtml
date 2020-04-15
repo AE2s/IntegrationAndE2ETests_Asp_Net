@@ -1,0 +1,25 @@
+﻿
+@model Movie
+    <div class="form-group">
+
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+        <br />
+        @Html.LabelFor(x => x.Writer)
+        @Html.TextBoxFor(x => x.Writer, null, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Writer, null, new { @class = "text-danger" })
+        <br />
+        @Html.LabelFor(x => x.ReleasedOn)
+        @*@Html.TextBoxFor(x => x.ReleasedOn, "{0:dd/MM/yyyy}", new { @value = Model!= null ? Model.ReleasedOn.ToString("YYYY-MM-dd") : string.Empty, @class = "form-control", type = "date" })*@
+
+        @Html.TextBoxFor(x=> x.ReleasedOn, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+
+        @Html.ValidationMessageFor(x => x.ReleasedOn, null, new { @class = "text-danger" })
+        <br />
+        @Html.LabelFor(x => x.Genre)
+        @Html.DropDownListFor(x => x.Genre, Html.GetEnumSelectList(typeof(GenreEnum)), "Select", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Genre, null, new { @class = "text-danger" })
+
+
+    </div>

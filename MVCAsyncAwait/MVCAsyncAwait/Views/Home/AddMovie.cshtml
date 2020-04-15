@@ -8,8 +8,7 @@
 
 @using (Html.BeginForm())
 {
-@Html.LabelFor(x => x.Name)
-@Html.TextBoxFor(x => x.Name)
+    Html.RenderPartial("MovieForm",Model);
 
-<input id="AddM" type="submit" value="Add" />
+    <input id="AddM" type="submit" value="Add" class="btn btn-primary"/>
 }

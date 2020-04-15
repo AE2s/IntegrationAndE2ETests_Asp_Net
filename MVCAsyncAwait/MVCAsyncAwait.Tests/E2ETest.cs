@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.IO;
 using NFluent;
 using OpenQA.Selenium.Chrome;
 using Xunit;
@@ -10,7 +12,8 @@ namespace MVCAsyncAwait.Tests
         [Fact]
         public void Should_add_update_and_delete_movie()
         {
-            var driver = new ChromeDriver(@"C:\AsyncAwait\MVCAsyncAwait\MVCAsyncAwait.Tests\selenium-drivers")
+            
+            var driver = new ChromeDriver("selenium-drivers")
             {
                 Url = "http://localhost:3500"
             };

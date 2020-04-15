@@ -4,21 +4,30 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    @Html.ActionLink("Create movie", "AddMovie")
-    <table>
+    <h1 class="display-4">Movies</h1>
+
+    @Html.ActionLink("Create movie", "AddMovie", new { }, new { @class = "badge badge-secondary" })
+    <br />
+    <table class="table">
         <tr>
             <th>Movie name</th>
+            <th>Writer</th>
+            <th>Genre</th>
+            <th>Released on</th>
+            <th>#</th>
+            <th>#</th>
         </tr>
         @foreach (var movie in Model)
         {
             <tr>
                 <td>@movie.Name</td>
-                <td>@Html.ActionLink("Update movie", "UpdateMovie", new { movie.MovieId })</td>
-                <td>@Html.ActionLink("Delete movie", "DeleteMovie", new { movie.MovieId })</td>
+                <td>@movie.Writer</td>
+                <td>@movie.Genre</td>
+                <td>@movie.ReleasedOn.ToString("dd/MM/yyyy")</td>
+                <td>@Html.ActionLink("Update movie", "UpdateMovie", new { movie.MovieId }, new { @class = "badge badge-info" })</td>
+                <td>@Html.ActionLink("Delete movie", "DeleteMovie", new { movie.MovieId }, new { @class = "badge badge-danger" })</td>
             </tr>
         }
     </table>
-    <div id="test"></div>
+
 </div>

@@ -16,10 +16,9 @@ namespace MVCAsyncAwait
             _context = context;
         }
 
-        public async Task Add(string name)
+        public async Task Add(Movie movie)
         {
-            var blog = new Movie { Name = name };
-            await _context.Movies.AddAsync(blog);
+            await _context.Movies.AddAsync(movie);
             await _context.SaveChangesAsync();
         }
 

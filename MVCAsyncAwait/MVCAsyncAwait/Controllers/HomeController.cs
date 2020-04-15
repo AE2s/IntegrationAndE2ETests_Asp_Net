@@ -12,7 +12,7 @@ namespace MVCAsyncAwait.Controllers
 
         public HomeController(MovieContext movieContext)
         {
-            _movieService=new MovieService(movieContext);
+            _movieService = new MovieService(movieContext);
         }
 
         public async Task<IActionResult> Index()
@@ -24,14 +24,16 @@ namespace MVCAsyncAwait.Controllers
         [HttpPost]
         public async Task<IActionResult> AddMovie(Movie movie)
         {
-            await _movieService.Add(movie.Name);
+            if (!ModelState.IsValid) return View(movie);
+
+            await _movieService.Add(movie);
             return RedirectToAction("Index");
 
         }
-        
+
         public IActionResult AddMovie()
         {
-            
+
             return View();
 
         }
@@ -39,6 +41,7 @@ namespace MVCAsyncAwait.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateMovie(Movie movie)
         {
+            if (!ModelState.IsValid) return View(movie);
             await _movieService.Update(movie);
             return RedirectToAction("Index");
 
@@ -53,9 +56,11 @@ namespace MVCAsyncAwait.Controllers
 
         }
 
-        
+
         public async Task<ActionResult> DeleteMovie(int? movieId)
         {
+            if (!movieId.HasValue)
+                return View("Index");
             await _movieService.Delete(movieId);
             return RedirectToAction("Index");
 

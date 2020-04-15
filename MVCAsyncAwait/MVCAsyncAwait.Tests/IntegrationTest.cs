@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using MVCAsyncAwait.Models;
 using NFluent;
 using Xunit;
 
@@ -49,7 +50,7 @@ namespace MVCAsyncAwait.Tests
             await using (var context = new MovieContext(_dataBaseOptions))
             {
                 var service = new MovieService(context);
-                await service.Add("Casablanca");
+                await service.Add(new Movie{Name = "Casablanca"});
                 context.SaveChanges();
             }
 
@@ -69,7 +70,7 @@ namespace MVCAsyncAwait.Tests
             await using (var context = new MovieContext(_dataBaseOptions))
             {
                 var service = new MovieService(context);
-                await service.Add("Casablanca");
+                await service.Add(new Movie{Name = "Casablanca" });
                 context.SaveChanges();
             }
 
@@ -97,7 +98,7 @@ namespace MVCAsyncAwait.Tests
             await using (var context = new MovieContext(_dataBaseOptions))
             {
                 var service = new MovieService(context);
-                await service.Add("Casablanca");
+                await service.Add(new Movie{Name = "Casablanca" });
                 context.SaveChanges();
             }
 
